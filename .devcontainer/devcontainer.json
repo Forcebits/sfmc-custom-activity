@@ -4,7 +4,7 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "web",
 	"workspaceFolder": "/workspace",
-
+	"appPort": [3000, "3000:3000"],
 	// Uncomment the line below if you want to keep your containers running after VS Code shuts down.
 	// "shutdownAction": "none",
 
