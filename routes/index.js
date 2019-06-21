@@ -4,6 +4,6 @@
  */
 exports.index = function(req, res){
     res.render( 'index', {
-        title: 'Hello World from Pug in Staging Only!',
+        title: 'Hello World from Node + Express + Pug + Mongodb!',
     });
 };
