@@ -3,7 +3,9 @@
         "start": "node server.js"
     },
     "dependencies": {
+        "dotenv": "^8.0.0",
         "express": "^4.17.1",
+        "mongoose": "^5.6.0",
         "pug": "^2.0.4",
         "request": "^2.88.0"
     }
