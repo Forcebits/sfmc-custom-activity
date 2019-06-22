@@ -22,5 +22,5 @@ app.listen(process.env.PORT || 3000, function(){
     console.log('Your node js server is running');
 });
 
-var test = Object.create(Test.prototype);
-test.run();
+//var test = Object.create(Test.prototype);
+//test.run();
