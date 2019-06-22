@@ -2,6 +2,9 @@ const ErrorHandler = rootRequire('utils').ErrorHandler;
 
 function DocumentInfo(name, schema){
     let documentInfo = Object.create(DocumentInfo.prototype);
+    documentInfo.name;
+    documentInfo.schema;
+
     if (typeof name == 'string' || name instanceof String) {
         documentInfo.name = name;
     } else {
@@ -16,4 +19,4 @@ function DocumentInfo(name, schema){
     return documentInfo;
 }
 
-module.exports.DocumentInfo = DocumentInfo;
+module.exports = DocumentInfo;

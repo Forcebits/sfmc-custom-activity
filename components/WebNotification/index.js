@@ -1,5 +1,9 @@
-const Notification = rootRequire('components/WebNotification').Notification;
-module.exports.Notification = Notification;
+const notification = rootRequire('components/WebNotification/Notification').Notification;
+const notificationsDAL = rootRequire('components/WebNotification/NotificationsDAL').NotificationsDAL;
+const test = rootRequire('components/WebNotification/Test').Test;
 
-const NotificationDAL = rootRequire('components/WebNotification').NotificationDAL;
-module.exports.NotificationDAL = NotificationDAL;
+module.exports.WebNotifications = function() {
+    this.Notification = notification;
+    this.NotificationsDAL = notificationsDAL;
+    this.Test = test;
+}
