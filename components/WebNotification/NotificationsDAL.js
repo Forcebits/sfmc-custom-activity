@@ -1,6 +1,6 @@
 const ErrorHandler = rootRequire('utils').ErrorHandler;
 const ArraysUtil = rootRequire('utils').ArraysUtil;
-const Mongo = rootRequire('model/Mongo');
+const Mongo = rootRequire('model/MongoODM');
 const DocumentInfo = rootRequire('model/DocumentInfo');
 const Notification = rootRequire('components/WebNotification/Notification');
 const NotificationScheme = rootRequire('components/WebNotification/NotificationScheme');
