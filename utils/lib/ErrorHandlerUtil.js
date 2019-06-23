@@ -1,3 +1,5 @@
+'use strict';
+
 function appError(name, httpCode, description, isOperational) {
     Error.call(this);
     Error.captureStackTrace(this);

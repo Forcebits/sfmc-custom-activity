@@ -17,12 +17,3 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-    
-    links:
-      - mongo
-
-  mongo:
-    image: mongo
-    volumes:
-      - /data/db
- 
