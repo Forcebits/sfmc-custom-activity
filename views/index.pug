@@ -1,7 +1,13 @@
-p From server: #{title}
+doctype html
+html(lang="en")
+    head
+        include common/head.pug
+    body
+        h1 From server
+        p #{title}
 
-a(href='/JourneyActivities/WebPushNotifications') WebPushNotifications
-br
-a(href='/config.json') Config.json
-br
-a(href='/TestNotification') Test web push notification
+        a(href='/JourneyActivities/WebPushNotifications') WebPushNotifications
+        br
+        a(href='/config.json') Config.json
+        br
+        a(href='/TestNotification') Test web push notification
