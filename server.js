@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
+app.locals.basedir = path.join(__dirname, 'views');
 
 //public folder
 app.use(express.static('public'));
