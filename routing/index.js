@@ -7,6 +7,15 @@ const ctrWebPushNotifications  = rootRequire('controllers/JourneyActivities/WebP
 
 const router     = express.Router();
 
+//--------JourneyActivities----------
+
+//WebPushNotifications API
+router.post('/JourneyActivities/WebPushNotifications/save/', ctrWebPushNotifications.save);
+router.post('/JourneyActivities/WebPushNotifications/validate/', ctrWebPushNotifications.validate);
+router.post('/JourneyActivities/WebPushNotifications/publish/', ctrWebPushNotifications.publish);
+router.post('/JourneyActivities/WebPushNotifications/execute/', ctrWebPushNotifications.execute);
+router.get('/JourneyActivities/WebPushNotifications', ctrWebPushNotifications.index);
+
 //TestNotification
 router.get('/TestNotification', ctrTestNotification.index);
 
@@ -14,15 +23,5 @@ router.get('/TestNotification', ctrTestNotification.index);
 router.get('/config.json', ctr.configActivity);
 router.get('/|index|index.html', ctr.index);
 
-
-
-//--------JourneyActivities----------
-
-//WebPushNotifications API
-router.get('/JourneyActivities/WebPushNotifications', ctrWebPushNotifications.index);
-router.post('/JourneyActivities/WebPushNotifications/save/', ctrWebPushNotifications.save);
-router.post('/JourneyActivities/WebPushNotifications/validate/', ctrWebPushNotifications.validate);
-router.post('/JourneyActivities/WebPushNotifications/publish/', ctrWebPushNotifications.publish);
-router.post('/JourneyActivities/WebPushNotifications/execute/', ctrWebPushNotifications.execute);
 
 module.exports = router;
