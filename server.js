@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+//public folder
+app.use(express.static('public'));
+
 //app.get('/', controller.index);
 app.use(routing);
 

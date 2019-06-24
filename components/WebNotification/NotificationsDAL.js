@@ -1,3 +1,5 @@
+'use strict';
+
 const ErrorHandler = rootRequire('utils').ErrorHandler;
 const ArraysUtil = rootRequire('utils').ArraysUtil;
 const Mongo = rootRequire('model/MongoODM');

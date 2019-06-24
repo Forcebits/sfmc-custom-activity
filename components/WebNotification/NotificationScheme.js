@@ -1,4 +1,6 @@
-NotificationScheme = function(){
+'use strict';
+
+function NotificationScheme(){
     return {
         title : 'string',
         content : 'string',
