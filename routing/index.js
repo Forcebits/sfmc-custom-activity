@@ -17,6 +17,8 @@ router.post('/JourneyActivities/WebPushNotifications/execute/', ctrWebPushNotifi
 router.get('/JourneyActivities/WebPushNotifications', ctrWebPushNotifications.index);
 
 //TestNotification
+router.post('/TestNotification/sendNotification/', ctrTestNotification.sendNotification);
+router.get('/TestNotification/getNotifications/', ctrTestNotification.getNotifications);
 router.get('/TestNotification', ctrTestNotification.index);
 
 //Home
