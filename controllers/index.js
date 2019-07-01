@@ -1,12 +1,28 @@
 'use strict';
 
+const NotificationLogic = rootRequire('components/WebNotification/NotificationLogic');
+
 /*
  * GET home page.
  */
 exports.index = function(req, res){
-    res.render( 'index', {
-        title: 'Hello World from Node + Express + Pug + Mongodb! We are in the controller now.',
+    console.log(req.session);
+    NotificationLogic.getCountriesList(function(countriesList){
+        const params = {
+            title: process.env.ACTIVITY_NAME,
+            countriesList : countriesList
+        };
+        
+        if( !req.session || !req.session.token) {
+            res.render( 'error', {
+                title: 'Unauthenticated'
+            });
+        } else { 
+            res.render('index', params);
+        }
+
     });
+    
 };
 
 exports.configActivity = function(req, res){

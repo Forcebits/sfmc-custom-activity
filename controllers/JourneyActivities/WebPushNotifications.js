@@ -10,7 +10,7 @@ exports.logExecuteData = [];
  */
 exports.index = function(req, res){
     res.render( 'index', {
-        title: 'This is the Web push notifications for JOurney Activities section!',
+        title: 'This is the API of Web push notifications for Journey Activities!',
     });
 };
 

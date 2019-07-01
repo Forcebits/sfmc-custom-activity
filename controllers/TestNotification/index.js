@@ -4,7 +4,7 @@ const NotificationLogic = rootRequire('components/WebNotification/NotificationLo
 
 exports.index = function(req, res){
     const params = {
-        title: 'Home for testing web push notifications',
+        title: 'Test Web Push Notifications',
         "onesignalAppId": process.env.ONESIGNAL_ID,
     }
     res.render( 'TestNotification/index', params);

@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+    head
+        include /common/head.pug
+    body
+        article.slds-card
+            div(class="slds-card__header slds-grid")
+                header(class="slds-media slds-media_center slds-has-flexi-truncate")
+                    h1.slds-card__header-title
+                        p.slds-text-heading_medium #{title}
+            div(class="slds-card__body slds-card__body_inner slds-clearfix")
+                br
+                blockquote(class="doc site-blockquote_warning slds-clearfix")
+                    p(class="doc lead") Error
+                    p.doc This app may only be loaded via Salesforce Marketing Cloud.
