@@ -82,7 +82,7 @@ Then in order for Heroku to compile correctly, add all the .env variables as 'co
 If all of the above is correct, the environment would be up and running for local, remote (github) and deployments (heroku).
 
 Additionally create a *.gitignore* file with the following
-````
+```
 /node_modules
 npm-debug.log
 .DS_Store
