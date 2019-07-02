@@ -1,8 +1,8 @@
 'use strict';
 
-let connection = new Postmonger.Session();
-let authTokens = {};
-let payload = {};
+var connection = new Postmonger.Session();
+var authTokens = {};
+var payload = {};
 window.onload = function() {
     onRender();
 };
