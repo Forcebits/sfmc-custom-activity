@@ -12,7 +12,9 @@ connection.on('initActivity', init);
 connection.on('requestedTokens', onGetTokens);
 connection.on('requestedEndpoints', onGetEndpoints);
 
-connection.on('clickedNext', save);
+connection.on('clickedNext', onClickedNext);
+connection.on('clickedBack', onClickedBack);
+connection.on('gotoStep', onGotoStep);
 
 function onRender() {
     console.log('rendering');
@@ -66,12 +68,91 @@ function save() {
     console.log('save method');
 
     payload['arguments'].execute.inArguments = [{
-        "tokens": authTokens,
-        "emailAddress": "{{Contact.Attribute.EmailAddress}}"
+        "tokens": authTokens
     }];
     
     payload['metaData'].isConfigured = true;
 
     console.log(payload);
     connection.trigger('updateActivity', payload);
+}
+
+function onClickedNext () {
+    if (
+        (currentStep.key === 'step2' && steps[2].active === false) ||
+        currentStep.key === 'step3'
+    ) {
+        save();
+    } else {
+        connection.trigger('nextStep');
+    }
+}
+
+function onClickedBack () {
+    connection.trigger('prevStep');
+}
+
+function onGotoStep (step) {
+    showStep(step);
+    connection.trigger('ready');
+}
+
+function showStep(step, stepIndex) {
+    if (stepIndex && !step) {
+        step = steps[stepIndex-1];
+    }
+
+    currentStep = step;
+
+    hideElements('.step');
+
+    switch(currentStep.key) {
+        case 'step1':
+            showElements('#step1');
+            connection.trigger('updateButton', {
+                button: 'next',
+                enabled: Boolean(getCountries())
+            });
+            connection.trigger('updateButton', {
+                button: 'back',
+                visible: false
+            });
+            break;
+        case 'step2':
+            showElements('#step2');
+            connection.trigger('updateButton', {
+                button: 'back',
+                visible: true
+            });
+            connection.trigger('updateButton', {
+                button: 'next',
+                text: 'next',
+                visible: true
+            });
+            break;
+        case 'step3':
+            showElements('#step3');
+            break;
+    }
+}
+
+function getCountries(){
+    var checkedValues = document.querySelectorAll('.selectedCountries:checked');
+    if (checkedValues.length > 0){
+        return checkedValues;
+    } else return false;
+}
+
+function showElements(selector){
+    var results = document.querySelectorAll(selector);
+    results.forEach(elem => {
+        elem.style.display = "block";
+    });
+}
+
+function hideElements(selector){
+    var results = document.querySelectorAll(selector);
+    results.forEach(elem => {
+        elem.style.display = "none";
+    });
 }

@@ -20,10 +20,10 @@ html(lang="en")
                         each val in countriesList
                             li(class="slds-item slds-float_left slds-item-fixedWith")
                                 if val.checked
-                                    input(type="checkbox", name="selectedCountries", value=val.name, id=val.name, checked)
+                                    input(type="checkbox", class="selectedCountries", name="selectedCountries", value=val.code, id=val.code, checked)
                                 else 
-                                    input(type="checkbox", name="selectedCountries", value=val.name, id=val.name)
-                                label(for=val.name)  #{val.name}
+                                    input(type="checkbox", class="selectedCountries", name="selectedCountries", value=val.code, id=val.code)
+                                label(for=val.code)  #{val.name}
 
         #step2.step
             article.slds-card

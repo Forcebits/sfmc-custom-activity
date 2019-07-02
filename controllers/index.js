@@ -62,12 +62,12 @@ exports.configActivity = function(req, res){
                 },
             "publish": {
                 "url": process.env.DOMAIN + "/JourneyActivities/" + process.env.ACTIVITY_URI + "/publish",
-                    "verb": "POST",
+                "verb": "POST",
                 "useJwt": true
                 },
             "stop": {
                 "url": process.env.DOMAIN + "/JourneyActivities/" + process.env.ACTIVITY_URI + "/stop",
-                    "verb": "POST",
+                "verb": "POST",
                 "useJwt": true
             },
             "validate": {
@@ -77,7 +77,9 @@ exports.configActivity = function(req, res){
             }
         },
         "wizardSteps": [
-            { "label": "Configure Activity", "key": "step1", "active": true }
+            { "label": "Configure Activity (part 1)", "key": "step1", "active": true },
+            { "label": "Configure Activity (part 2)", "key": "step2", "active": true },
+            { "label": "Configure Activity (part 3)", "key": "step3", "active": false }
         ],
         "schema": {
             "arguments": {
