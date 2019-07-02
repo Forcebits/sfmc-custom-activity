@@ -94,7 +94,7 @@ You can run now this command in local VSCode terminal:
 npm start
 ```
 Remember that this command is running the app in the docker container, in order to view it in your local browser, run the following command:
-````
+```
 >Remote-Containers: Forward Port from Container...
 ```
 Write the port where you are exposing the app in the docker (3000), then you cna see it in the browser as localhost:3000
