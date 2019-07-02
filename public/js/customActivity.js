@@ -18,27 +18,25 @@ connection.on('gotoStep', onGotoStep);
 
 function onRender() {
     console.log('rendering');
-    // JB will respond the first time 'ready' is called with 'initActivity'
-    connection.trigger('ready');
-    connection.trigger('requestTokens');
-    connection.trigger('requestEndpoints');
 
-    var checkedValues = document.querySelectorAll('.selectedCountries');
-    if (checkedValues && checkedValues.length > 0){
-        console.log('checkedValues', checkedValues);
-        checkedValues.forEach(elem => {
+    var checkElems = document.querySelectorAll('.selectedCountries');
+    if (checkElems && checkElems.length > 0){
+        checkElems.forEach(elem => {
             elem.addEventListener("change", function() {
                 console.log('eventListener');
                 if (getCountries()){        
-                    console.log('enable next');            
                     connection.trigger('updateButton', { button: 'next', enabled: true });
                 } else {
-                    console.log('disable next');            
                     connection.trigger('updateButton', { button: 'next', enabled: false });
                 }
               });
         });
     }
+
+    // JB will respond the first time 'ready' is called with 'initActivity'
+    connection.trigger('ready');
+    connection.trigger('requestTokens');
+    connection.trigger('requestEndpoints');
 }
 
 function init(data) {
