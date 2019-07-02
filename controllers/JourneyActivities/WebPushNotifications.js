@@ -9,8 +9,9 @@ exports.logExecuteData = [];
  * GET home page.
  */
 exports.index = function(req, res){
-    res.render( 'index', {
+    res.render( 'WebPushNotifications/index', {
         title: 'This is the API of Web push notifications for Journey Activities!',
+        log: exports.logExecuteData
     });
 };
 
