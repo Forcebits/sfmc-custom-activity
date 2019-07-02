@@ -133,9 +133,9 @@ http://<your-heroku-or-local-url>/TestNotification
 * request: designed to be the simplest way possible to make http calls for node.
 ### About SFMC
 I had the opportunity to do some testing of the custom activity.
-In the panel:
+* In the panel:
 ![SFMC-custom-activity-panel](https://custom-activity-challenge.herokuapp.com/images/github/sfmc-custom-activity.png)
-On the journey:
+* On the journey:
 ![SFMC-custom-activity-journey](https://custom-activity-challenge.herokuapp.com/images/github/sfmc-custom-activity2.png)
-Opened
+* Opened
 ![SFMC-custom-activity-journey](https://custom-activity-challenge.herokuapp.com/images/github/sfmc-custom-activity-view.png)
