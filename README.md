@@ -19,12 +19,13 @@ This repo is still under development.
 * I wouldn't work with require.js yet, it's a good library, but would like to try top players as Webpack. (Need to test libraries).
 * To run it locally read the getting started guide.
 * Time invested: more than 15h.
-** I've started from zero knowledge in Docker, VS code for Docker, Node, Mongodb and its modules.
-** I've started from zero knowledge in SFMC and custom activities.
-** I've started from zero knowledge in Heroku.
-** I've done a basic setup of the folders organization and it's interactions between folders and modules.
-** I've implemented a maintanable solution based in other languages and some best practices found while reasearching.
-** I've read documentation of all of it and tested in different levels.
+## Considerations
+* I've started from zero knowledge in Docker, VS code for Docker, Node, Mongodb and its modules.
+* I've started from zero knowledge in SFMC and custom activities.
+* I've started from zero knowledge in Heroku.
+* I've done a basic setup of the folders organization and it's interactions between folders and modules.
+* I've implemented a maintanable solution based in other languages and some best practices found while reasearching.
+* I've read documentation of all of it and tested in different levels.
 ## Getting started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. This guide assume you have already setup all the tools listed in the Prerequisites.
 ### Prerequisites
@@ -66,4 +67,6 @@ COUNTRIES_LIST_URL=https://mock-countries.herokuapp.com/list
 DEFAULT_COUNTRY_CODES=ES,US  -> can be changed
 NODE_OPTIONS="--max-old-space-size=4096"  -> also setup docker to have some good ram and cpu allocation to don't get the app hanging and freezing all the time.
 ```
+From now you can use the VSCode terminal to run commands in git. If you are connected to your own repository, create a branch called 'staging'.
 
+On heroku, create a pipeline, then create 2 apps, in my case is custom-activity-challenge-pre por staging purposes and custom-activity-challenge for production. Place them in the correct stages of the pipeline and configure them like the image below:
