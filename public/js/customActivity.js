@@ -23,7 +23,7 @@ function onRender() {
     connection.trigger('requestTokens');
     connection.trigger('requestEndpoints');
 
-    var checkedValues = document.querySelectorAll('.selectedCountries');
+    var checkedValues = document.querySelectorAll('.selectedCountries:checked');
     if (checkedValues && checkedValues.length > 0){
         console.log('checkedValues', checkedValues);
         checkedValues.forEach(elem => {
