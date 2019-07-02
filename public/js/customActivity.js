@@ -27,8 +27,9 @@ function onRender() {
     if (checkedValues && checkedValues.length > 0){
         console.log('checkedValues', checkedValues);
         checkedValues.forEach(elem => {
-            elem.addEventListener("click", function() {
-                if (getCountries()){
+            elem.addEventListener("change", function() {
+                console.log('eventListener');
+                if (getCountries()){                    
                     connection.trigger('updateButton', { button: 'next', enabled: true });
                 } else {
                     connection.trigger('updateButton', { button: 'next', enabled: false });
