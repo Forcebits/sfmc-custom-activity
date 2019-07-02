@@ -28,14 +28,14 @@ function init(data) {
         payload = data;
     }
     
-    let hasInArguments = Boolean(
+    var hasInArguments = Boolean(
         payload['arguments'] &&
         payload['arguments'].execute &&
         payload['arguments'].execute.inArguments &&
         payload['arguments'].execute.inArguments.length > 0
     );
 
-    let inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+    var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
     console.log(inArguments);
 
