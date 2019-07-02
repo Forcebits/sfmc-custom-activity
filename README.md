@@ -115,8 +115,27 @@ Decouples the routing definition in one place to improve maintaiability and exte
 ### Utils
 Suppoort classes for Logging, mailing, external libraries, JWT, etc.
 ## Important
+### About OneSignal
 If you have configured all the .env variables, you can test the sending of web push notifications with onesignal using the following url (check the routing folder for more) or just check [this link](https://custom-activity-challenge-pre.herokuapp.com/TestNotification/).
 ```
 http://<your-heroku-or-local-url>/TestNotification
 ```
 ![OneSignal-testnotification](https://custom-activity-challenge.herokuapp.com/images/github/one-signal-testnotifications.png)
+### About Installed packages
+* body-parser: Used to parse requests for express (in recent versions doesn't come natively).
+* dotenv: For using the .env file and variables.
+* express: Node framework for building web applications. Decided to use this one for it's similarities with other frameworks I've worked with in other languages.
+* express-validator: used by express.
+* jsonwebtoken: for managing JSON Web Tokens, recommended by SFMC.
+* mongoose: To connect with MongoDB. Decided to use this DB for it's compatibility to work with JSON. No transactions are needed in this app and it has natively High performance, availability and scalability features.
+* onesignal-node: for web push notifications, good documentation and api to work with onesignal.
+* pug: easy to understand library for views, react and angular are strong alternativies, but for a small challenge pug have the advantage of fast learning curve.
+* request: designed to be the simplest way possible to make http calls for node.
+### About SFMC
+I had the opportunity to do some testing of the custom activity.
+In the panel:
+![SFMC-custom-activity-panel](https://custom-activity-challenge.herokuapp.com/images/github/sfmc-custom-activity.png)
+On the journey:
+![SFMC-custom-activity-journey](https://custom-activity-challenge.herokuapp.com/images/github/sfmc-custom-activity2.png)
+Opened
+![SFMC-custom-activity-journey](https://custom-activity-challenge.herokuapp.com/images/github/sfmc-custom-activity-view.png)
