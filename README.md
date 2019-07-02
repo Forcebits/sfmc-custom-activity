@@ -14,6 +14,7 @@ This repo is still under development.
 * Need to add comment blocks around all the code.
 * Quality checks of the pipeline in Github and Heroku.
 * Unit testing and automated postman tests for the endpoints.
+* Cleanup deprecated code.
 ## About Key points of the challenge
 * I wouldn't work with jquery as the interactions don't require a complex level. A custom library using HMLT5 would be easier to have and will get you better performance results.
 * I wouldn't work with require.js yet, it's a good library, but would like to try top players as Webpack. (Need to test libraries).
@@ -73,7 +74,49 @@ On heroku, create a pipeline, then create 2 apps, in my case is custom-activity-
 ![Heroku-Pipeline](https://custom-activity-challenge.herokuapp.com/images/github/heroku-pipeline.png)
 
 On the setup of each app, connect with Github and connect 'pre' with the 'staging' branch, and 'master' with 'production'. And check the option for automatic builds and deployments. This option tells the heroku app to keep listening to any changes done in those github branches and will automatically deploy them in the respective apps. 
-![Heroku-Pipeline](https://custom-activity-challenge.herokuapp.com/images/github/heroku-automatic-builds.png)
+![Heroku-Automatic-Builds](https://custom-activity-challenge.herokuapp.com/images/github/heroku-automatic-builds.png)
 
 Then in order for Heroku to compile correctly, add all the .env variables as 'config vars' in the setup. Do not upload PORT, PRO_MONGODB, PRE_MONGODB and NODE_OPTIONS keys.
-![Heroku-Pipeline](https://custom-activity-challenge.herokuapp.com/images/github/heroku-config-vars.png)
+![Heroku-Config-Vars](https://custom-activity-challenge.herokuapp.com/images/github/heroku-config-vars.png)
+
+If all of the above is correct, the environment would be up and running for local, remote (github) and deployments (heroku).
+
+Additionally create a *.gitignore* file with the following
+````
+/node_modules
+npm-debug.log
+.DS_Store
+/.env
+```
+
+You can run now this command in local VSCode terminal:
+```
+npm start
+```
+Remember that this command is running the app in the docker container, in order to view it in your local browser, run the following command:
+````
+>Remote-Containers: Forward Port from Container...
+```
+Write the port where you are exposing the app in the docker (3000), then you cna see it in the browser as localhost:3000
+## About the project structure
+The project it's applying the MVC pattern, additionally decouples the use of specific components. It's divided in the following:
+### Controllers
+The controller responds to the user input and performs interactions on the data model objects. Here it shouldn't be any logic, instead it should only deliver the request to the right Logic of the corresponding component. Once it's ready, it should share the response and pass it to the view. It can be used for front-end uses or API endpoints to be exposed.
+### Model
+The model is responsible for managing the data of the application. In this case, because the have decoupled the component to a different folder, we only maintain the specifics realted to the database we want to work on. In this case we have created a wrapper for Mongo db connector called MongoODM. Additionally we can define the different objects needed by this ODM to do the data transformation, like DocumentInfo. There is also no business logic in this layer.
+### Views
+This layer is the presentation of the application in a particular format. It uses pug and define the structure and manage the data passed in the response by the controller. It also doesn't define the business logic, but the methods to improve the presentation layer, like callouts, animations, specific behaviours like showing a notification preview when the texts in the inputs are being filled.
+### Components
+Components it's a different concept, what we do it's to isolate a specific sub-application, in this case everything related to WebNotification. It contains the business logic, it's main object definition, it's specific data transfer object (DTO, called Scheme) and data access layer (DAL) for mongo. Here we can add different DALs and DTOs depending on the Database. We can use components in other applications as doesn't depend in any of the other MVC structure. We can also extent the amount of components we need in this project.
+### Public
+Usually for css/js/images files and some configurations like manifest and web workers. But in this case, couldn't make it work the custom activity without having postmonger and the definition of the interaction of the activity with postmonger in this place. Need more time to look for improvements.
+### Routing
+Decouples the routing definition in one place to improve maintaiability and extensibility. 
+### Utils
+Suppoort classes for Logging, mailing, external libraries, JWT, etc.
+## Important
+If you have configured all the .env variables, you can test the sending of web push notifications with onesignal using the following url (check the routing folder for more) or just check [this link](https://custom-activity-challenge-pre.herokuapp.com/TestNotification/).
+```
+http://<your-heroku-or-local-url>/TestNotification
+```
+![OneSignal-testnotification](https://custom-activity-challenge.herokuapp.com/images/github/one-signal-testnotifications.png)
