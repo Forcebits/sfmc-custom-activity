@@ -13,26 +13,10 @@ exports.index = function(req, res){
             countriesList : countriesList,
             log: WPN.logExecuteData
         };
-        
-        if( !req.session || !req.session.token) {
-            res.render( 'error', {
-                title: 'Unauthenticated'
-            });
-        } else { 
-            res.render('index', params);
-        }
 
+        res.render('index', params);
     });
     
-};
-
-exports.login = function( req, res ) {
-    console.log( 'req.body: ', req.body );
-    res.redirect( '/' );
-};
-
-exports.logout = function( req, res ) {
-    req.session.token = '';
 };
 
 exports.configActivity = function(req, res){
