@@ -22,6 +22,19 @@ function onRender() {
     connection.trigger('ready');
     connection.trigger('requestTokens');
     connection.trigger('requestEndpoints');
+
+    var checkedValues = document.querySelectorAll('.selectedCountries');
+    if (checkedValues && checkedValues.length > 0){
+        checkedValues.forEach(elem => {
+            elem.addEventListener("click", function() {
+                if (getCountries()){
+                    connection.trigger('updateButton', { button: 'next', enabled: true });
+                } else {
+                    connection.trigger('updateButton', { button: 'next', enabled: false });
+                }
+              });
+        });
+    }
 }
 
 function init(data) {
@@ -138,7 +151,7 @@ function showStep(step, stepIndex) {
 
 function getCountries(){
     var checkedValues = document.querySelectorAll('.selectedCountries:checked');
-    if (checkedValues.length > 0){
+    if (checkedValues && checkedValues.length > 0){
         return checkedValues;
     } else return false;
 }
