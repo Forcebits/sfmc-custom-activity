@@ -23,15 +23,17 @@ function onRender() {
     connection.trigger('requestTokens');
     connection.trigger('requestEndpoints');
 
-    var checkedValues = document.querySelectorAll('.selectedCountries:checked');
+    var checkedValues = document.querySelectorAll('.selectedCountries');
     if (checkedValues && checkedValues.length > 0){
         console.log('checkedValues', checkedValues);
         checkedValues.forEach(elem => {
             elem.addEventListener("change", function() {
                 console.log('eventListener');
-                if (getCountries()){                    
+                if (getCountries()){        
+                    console.log('enable next');            
                     connection.trigger('updateButton', { button: 'next', enabled: true });
                 } else {
+                    console.log('disable next');            
                     connection.trigger('updateButton', { button: 'next', enabled: false });
                 }
               });
