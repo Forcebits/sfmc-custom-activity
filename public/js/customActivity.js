@@ -25,6 +25,7 @@ function onRender() {
 
     var checkedValues = document.querySelectorAll('.selectedCountries');
     if (checkedValues && checkedValues.length > 0){
+        console.log('checkedValues', checkedValues);
         checkedValues.forEach(elem => {
             elem.addEventListener("click", function() {
                 if (getCountries()){
@@ -60,12 +61,6 @@ function init(data) {
             console.log(key, val);
         });
     });
-
-    connection.trigger('updateButton', {
-        button: 'next',
-        text: 'done',
-        visible: true
-    });
 }
 
 function onGetTokens(tokens) {
@@ -91,6 +86,7 @@ function save() {
 }
 
 function onClickedNext () {
+    console.log('onClickedNext');
     if (
         (currentStep.key === 'step2' && steps[2].active === false) ||
         currentStep.key === 'step3'
@@ -102,15 +98,18 @@ function onClickedNext () {
 }
 
 function onClickedBack () {
+    console.log('onClickedBack');
     connection.trigger('prevStep');
 }
 
 function onGotoStep (step) {
+    console.log('onGotoStep');
     showStep(step);
     connection.trigger('ready');
 }
 
 function showStep(step, stepIndex) {
+    console.log('showStep');
     if (stepIndex && !step) {
         step = steps[stepIndex-1];
     }

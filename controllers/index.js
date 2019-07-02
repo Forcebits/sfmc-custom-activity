@@ -40,10 +40,8 @@ exports.configActivity = function(req, res){
         "arguments": {
             "execute": {
                "inArguments":[
-                    {
-                        "emailAddress": "{{Contact.Attribute.CustomActivity.EmailAddress}}"
-                    }									
-                ],
+
+                        ],
               "outArguments": [],
               "url": process.env.DOMAIN + "/JourneyActivities/" + process.env.ACTIVITY_URI + "/execute",
                 "verb": "POST",
