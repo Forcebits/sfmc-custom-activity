@@ -67,6 +67,13 @@ COUNTRIES_LIST_URL=https://mock-countries.herokuapp.com/list
 DEFAULT_COUNTRY_CODES=ES,US  -> can be changed
 NODE_OPTIONS="--max-old-space-size=4096"  -> also setup docker to have some good ram and cpu allocation to don't get the app hanging and freezing all the time.
 ```
-From now you can use the VSCode terminal to run commands in git. If you are connected to your own repository, create a branch called 'staging'.
+From now you can use the VSCode terminal to run commands in git. If you are connected to your own repository, create a branch called 'staging'. We will use this branch for the CI/CD.
 
 On heroku, create a pipeline, then create 2 apps, in my case is custom-activity-challenge-pre por staging purposes and custom-activity-challenge for production. Place them in the correct stages of the pipeline and configure them like the image below:
+![Heroku-Pipeline](https://custom-activity-challenge-pre.herokuapp.com/images/github/heroku-pipeline.png)
+
+On the setup of each app, connect with Github and connect 'pre' with the 'staging' branch, and 'master' with 'production'. And check the option for automatic builds and deployments. This option tells the heroku app to keep listening to any changes done in those github branches and will automatically deploy them in the respective apps. 
+![Heroku-Pipeline](https://custom-activity-challenge-pre.herokuapp.com/images/github/heroku-automatic-builds.png)
+
+Then in order for Heroku to compile correctly, add all the .env variables as 'config vars' in the setup. Do not upload PORT, PRO_MONGODB, PRE_MONGODB and NODE_OPTIONS keys.
+![Heroku-Pipeline](https://custom-activity-challenge-pre.herokuapp.com/images/github/heroku-config-vars.png)
