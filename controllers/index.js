@@ -1,5 +1,5 @@
 'use strict';
-
+const WPN = rootRequire('controllers/JourneyActivities/WebPushNotifications');
 const NotificationLogic = rootRequire('components/WebNotification/NotificationLogic');
 
 /*
@@ -10,7 +10,8 @@ exports.index = function(req, res){
     NotificationLogic.getCountriesList(function(countriesList){
         const params = {
             title: process.env.ACTIVITY_NAME,
-            countriesList : countriesList
+            countriesList : countriesList,
+            log: WPN.logExecuteData
         };
         
         if( !req.session || !req.session.token) {
@@ -23,6 +24,15 @@ exports.index = function(req, res){
 
     });
     
+};
+
+exports.login = function( req, res ) {
+    console.log( 'req.body: ', req.body );
+    res.redirect( '/' );
+};
+
+exports.logout = function( req, res ) {
+    req.session.token = '';
 };
 
 exports.configActivity = function(req, res){

@@ -22,6 +22,8 @@ router.get('/TestNotification/getNotifications/', ctrTestNotification.getNotific
 router.get('/TestNotification', ctrTestNotification.index);
 
 //Home
+router.post('/login', ctr.login );
+router.post('/logout', ctr.logout );
 router.get('/config.json', ctr.configActivity);
 router.get('/|index|index.html', ctr.index);
 
