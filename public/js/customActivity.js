@@ -15,6 +15,7 @@ connection.on('requestedEndpoints', onGetEndpoints);
 connection.on('clickedNext', save);
 
 function onRender() {
+    console.log('rendering');
     // JB will respond the first time 'ready' is called with 'initActivity'
     connection.trigger('ready');
     connection.trigger('requestTokens');
@@ -22,7 +23,7 @@ function onRender() {
 }
 
 function init(data) {
-    console.log(data);
+    console.log('init', data);
     if (data) {
         payload = data;
     }
@@ -66,7 +67,7 @@ function save() {
 
     payload['arguments'].execute.inArguments = [{
         "tokens": authTokens,
-        "emailAddress": "{{Contact.Attribute.PostcardJourney.EmailAddress}}"
+        "emailAddress": "{{Contact.Attribute.EmailAddress}}"
     }];
     
     payload['metaData'].isConfigured = true;
